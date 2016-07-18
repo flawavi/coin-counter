@@ -19,10 +19,53 @@
 // into the remainder, etc.
 
 
-function coinCounter (total) {
+// function coinCounter (total) {
 
-total*=100;
-  // Initialize a JavaScript object to hold the coins
+// total*=100;
+//   // Initialize a JavaScript object to hold the coins
+//   var coinPurse = {
+//     quarter: 0,
+//     dime: 0,
+//     nickle: 0,
+//     penny: 0
+//   };
+
+//       if (total % 25 < total) {
+//         coinPurse["quarter"] = Math.floor(total / 25)
+//         debugger
+//         total -= 25 * coinPurse["quarter"]
+
+//       }
+
+//       if (total % 10 < total){
+//         coinPurse["dime"] = Math.floor(total / 10)
+//         total -= 10 * coinPurse["dime"]
+//         debugger
+
+//       }
+
+//       if (total % 5 < total) {
+//         coinPurse["nickle"] = Math.floor(total / 5)
+//         total -= 5 * coinPurse["nickle"]
+
+//       }
+
+//       if (total % 1 < total) {
+//         coinPurse["penny"] = Math.floor(total / 1)
+//         total -= 1 * coinPurse["penny"]
+//         debugger
+
+//       }
+
+//     console.log(coinPurse);
+//     return coinPurse;
+//   }
+
+
+
+// coinCounter(.99);
+
+function coinCounter (total) {
   var coinPurse = {
     quarter: 0,
     dime: 0,
@@ -30,42 +73,22 @@ total*=100;
     penny: 0
   };
 
-      if (total % 25 < total) {
-        coinPurse["quarter"] = Math.floor(total / 25)
-        debugger
-        total -= 25 * coinPurse["quarter"]
+  var total = total * 100
+  var coins = Object.keys(coinPurse)
+  var coinValues = [25, 10, 5, 1]
 
-      }
-
-      if (total % 10 < total){
-        coinPurse["dime"] = Math.floor(total / 10)
-        total -= 10 * coinPurse["dime"]
-        debugger
-
-      }
-
-      if (total % 5 < total) {
-        coinPurse["nickle"] = Math.floor(total / 5)
-        total -= 5 * coinPurse["nickle"]
-
-      }
-
-      if (total % 1 < total) {
-        coinPurse["penny"] = Math.floor(total / 1)
-        total -= 1 * coinPurse["penny"]
-        debugger
-
-      }
-
-    console.log(coinPurse);
-    return coinPurse;
+  for (var i = 0; i < coins.length; i++) {
+    if (total % coinValues[i] < total) {
+      var coin = coins[i]
+      coinPurse[coin] = Math.floor(total/coinValues[i])
+      total -= coinPurse[coin] * coinValues[i]
+    }
   }
 
+  console.log(coinPurse)
+}
 
-
-coinCounter(.99);
-
-
+coinCounter(.74)
 
 
 
